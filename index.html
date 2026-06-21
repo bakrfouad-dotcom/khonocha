@@ -1,61 +1,156 @@
 <!DOCTYPE html>
-<html>
+<html lang="fr">
 <head>
 <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Invitation secrète</title>
 
 <style>
-body{
-    background:#0d1117;
-    color:#00ff88;
-    font-family:monospace;
-    text-align:center;
-    margin-top:100px;
+body {
+    background: #0d1117;
+    color: #00ff88;
+    font-family: monospace;
+    text-align: center;
+    margin: 0;
+    padding: 20px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    min-height: 100vh;
+    box-sizing: border-box;
 }
-button{
-    padding:15px 30px;
-    margin:10px;
-    font-size:18px;
-    cursor:pointer;
+h1 { color: #ff3366; text-shadow: 0 0 10px #ff3366; }
+h2 { color: #00ff88; }
+.container {
+    max-width: 600px;
+    width: 100%;
 }
-#oui{
-    background:#00ff88;
+button {
+    padding: 15px 30px;
+    margin: 15px;
+    font-size: 18px;
+    font-family: monospace;
+    font-weight: bold;
+    border: none;
+    border-radius: 5px;
+    cursor: pointer;
+    transition: transform 0.2s;
 }
-#non{
-    position:absolute;
+button:hover { transform: scale(1.05); }
+#oui, #boutonDate, #boutonMoto {
+    background: #00ff88;
+    color: #0d1117;
+}
+#non {
+    background: #ff3366;
+    color: white;
+    position: absolute;
+    z-index: 1000;
+}
+input[type="date"] {
+    padding: 12px;
+    font-size: 18px;
+    font-family: monospace;
+    background: #161b22;
+    color: #00ff88;
+    border: 2px solid #00ff88;
+    border-radius: 5px;
+    margin: 20px 0;
+    outline: none;
+}
+/* Style pour les petits cœurs qui tombent */
+.heart {
+    position: fixed;
+    color: #ff3366;
+    font-size: 20px;
+    animation: fall linear forwards;
+    z-index: -1;
+}
+@keyframes fall {
+    to { transform: translateY(105vh); }
 }
 </style>
 </head>
 
 <body>
 
-<h2>Initialisation...</h2>
-
-<p>Recherche de la plus belle fille...</p>
-
-<h1>❤️ [Son prénom] ❤️</h1>
-
-<p>Accepterais-tu un rendez-vous avec moi ?</p>
-
-<button id="oui" onclick="accepte()">OUI ❤️</button>
-<button id="non">NON ❌</button>
+<div id="content" class="container">
+    <h2>Initialisation...</h2>
+    <p>Recherche de la plus belle fille de la Terre...</p>
+    <h1>❤️ khonocha ❤️</h1>
+    <p>Accepterais-tu un rendez-vous avec moi ?</p>
+    
+    <button id="oui" onclick="etapeCalendrier()">OUI ❤️</button>
+    <button id="non">NON ❌</button>
+</div>
 
 <script>
+// Gestion du bouton NON qui s'enfuit
 const non = document.getElementById("non");
-
 non.addEventListener("mouseover", () => {
-    non.style.left = Math.random()*80 + "%";
-    non.style.top = Math.random()*80 + "%";
+    const x = Math.random() * (window.innerWidth - non.offsetWidth);
+    const y = Math.random() * (window.innerHeight - non.offsetHeight);
+    non.style.left = x + "px";
+    non.style.top = y + "px";
 });
 
-function accepte(){
-    document.body.innerHTML = `
-    <h1>Accès autorisé ❤️</h1>
-    <h2>Date confirmé avec succès</h2>
-    <p>🍝 Dîner</p>
-    <p>🌅 Balade</p>
-    <p>❤️ Toi et moi</p>
+// Étape 2 : Le choix de la date
+function etapeCalendrier() {
+    startHearts(); // Lance la pluie de cœurs
+    document.getElementById("content").innerHTML = `
+        <h1>Accès autorisé ❤️</h1>
+        <h2>Parfait ! Choisis la date de notre rendez-vous :</h2>
+        <input type="date" id="dateRdv" min="${new Date().toISOString().split('T')[0]}"><br>
+        <button id="boutonDate" onclick="etapeMoto()">Valider la date 🗓️</button>
     `;
+}
+
+// Étape 3 : La surprise en moto
+function etapeMoto() {
+    const dateChoisie = document.getElementById("dateRdv").value;
+    if(!dateChoisie) {
+        alert("Choisis une date d'abord ! 😉");
+        return;
+    }
+    
+    // Formater la date un peu plus joliment
+    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
+    const dateFormatee = new Date(dateChoisie).toLocaleDateString('fr-FR', options);
+
+    document.getElementById("content").innerHTML = `
+        <h1>Date réservée ! 🔥</h1>
+        <h3>Le ${dateFormatee}</h3>
+        <br>
+        <h2>Question bonus très importante...</h2>
+        <p>Ça te dit qu'on se fasse un tour en moto 🏍️ suivi d'une bonne glace sous le coucher de soleil 🌅🍦 ?</p>
+        <button id="boutonMoto" onclick="etapeFin()">Carrément ! 😍</button>
+    `;
+}
+
+// Étape finale : Message de confirmation
+function etapeFin() {
+    document.getElementById("content").innerHTML = `
+        <h1>Programme verrouillé ! 🔐🏍️</h1>
+        <h2>C'est officiel khonocha, le rendez-vous est pris.</h2>
+        <p>Prépare-toi pour la moto, le coucher de soleil et la glace ! 🌅🍦</p>
+        <br>
+        <h3 style="color: #ff3366;">J'ai hâte. ❤️</h3>
+    `;
+}
+
+// Petit bonus : Pluie de cœurs en arrière-plan
+function startHearts() {
+    setInterval(() => {
+        const heart = document.createElement("div");
+        heart.classList.add("heart");
+        heart.innerHTML = "❤️";
+        heart.style.left = Math.random() * 100 + "vw";
+        heart.style.top = "-5vh";
+        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+        document.body.appendChild(heart);
+        setTimeout(() => heart.remove(), 5000);
+    }, 300);
 }
 </script>
 
