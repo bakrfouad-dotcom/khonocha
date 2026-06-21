@@ -1,0 +1,63 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>Invitation secrète</title>
+
+<style>
+body{
+    background:#0d1117;
+    color:#00ff88;
+    font-family:monospace;
+    text-align:center;
+    margin-top:100px;
+}
+button{
+    padding:15px 30px;
+    margin:10px;
+    font-size:18px;
+    cursor:pointer;
+}
+#oui{
+    background:#00ff88;
+}
+#non{
+    position:absolute;
+}
+</style>
+</head>
+
+<body>
+
+<h2>Initialisation...</h2>
+
+<p>Recherche de la plus belle fille...</p>
+
+<h1>❤️ [Son prénom] ❤️</h1>
+
+<p>Accepterais-tu un rendez-vous avec moi ?</p>
+
+<button id="oui" onclick="accepte()">OUI ❤️</button>
+<button id="non">NON ❌</button>
+
+<script>
+const non = document.getElementById("non");
+
+non.addEventListener("mouseover", () => {
+    non.style.left = Math.random()*80 + "%";
+    non.style.top = Math.random()*80 + "%";
+});
+
+function accepte(){
+    document.body.innerHTML = `
+    <h1>Accès autorisé ❤️</h1>
+    <h2>Date confirmé avec succès</h2>
+    <p>🍝 Dîner</p>
+    <p>🌅 Balade</p>
+    <p>❤️ Toi et moi</p>
+    `;
+}
+</script>
+
+</body>
+</html>
