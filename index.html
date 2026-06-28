@@ -25,13 +25,13 @@ body {
 h1 { 
     color: #ff4a75; 
     text-shadow: 0 0 20px rgba(255, 74, 117, 0.6); 
-    font-size: 2.5rem;
+    font-size: 2.3rem;
     margin-bottom: 10px;
 }
 h2 { 
     color: #ff9ebb; 
     font-weight: 400;
-    font-size: 1.4rem;
+    font-size: 1.3rem;
 }
 p {
     color: #e0e0fc;
@@ -44,13 +44,13 @@ p {
     width: 100%;
     background: rgba(255, 255, 255, 0.05);
     backdrop-filter: blur(10px);
-    padding: 40px 20px;
+    padding: 30px 20px;
     border-radius: 24px;
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 #countdown {
-    font-size: 2.8rem;
+    font-size: 2.6rem;
     font-weight: 700;
     color: #ff4a75;
     text-shadow: 0 0 15px rgba(255, 74, 117, 0.4);
@@ -58,14 +58,14 @@ p {
     padding: 10px 20px;
     border-radius: 15px;
     display: inline-block;
-    margin: 25px 0;
+    margin: 20px 0;
     letter-spacing: 1px;
 }
 .programme-mignon {
     text-align: left;
-    margin: 30px auto;
-    max-width: 320px;
-    font-size: 1.1rem;
+    margin: 25px auto;
+    max-width: 340px;
+    font-size: 1.05rem;
     background: rgba(255, 74, 117, 0.1);
     padding: 20px;
     border-radius: 15px;
@@ -106,21 +106,21 @@ button:hover {
 <body>
 
 <div id="content" class="container">
-    <h2>Aujourd'hui, c'est notre dimanche... ✨</h2>
-    <h1>Coucou khonocha ❤️</h1>
-    <p>Je comptais les jours, et on y est enfin. J'ai déjà hâte d'y être. Regarde le temps qu'il te reste pour te préparer :</p>
+    <h2>De Casablanca à l'Italie... ✈️❤️</h2>
+    <h1>Coucou khonocha 🥰</h1>
+    <p>La distance c'est nul, mais ce soir à 18h, on l'efface le temps d'un date virtuel. Regarde les heures qui nous séparent de notre moment :</p>
     
     <!-- Zone du compte à rebours -->
     <div id="countdown">00h 00m 00s</div>
     
     <div class="programme-mignon">
-        <div>🏍️ <b>Étape 1 :</b> Grimper sur la moto (et te tenir fort à moi)</div>
-        <div>🌅 <b>Étape 2 :</b> Attraper le plus beau coucher de soleil</div>
-        <div>🍦 <b>Étape 3 :</b> Manger une glace</div>
-        <div>✨ <b>Étape 4 :</b> Passer le meilleur des moments avec toi</div>
+        <div>🏍️ <b>Étape 1 :</b> Je démarre la moto à Casa (et je traverse la mer en ligne droite)</div>
+        <div>🌅 <b>Étape 2 :</b> On se connecte pour le coucher de soleil</div>
+        <div>🍦 <b>Étape 3 :</b> On mange une glace chacun de notre côté (italienne pour toi, obligé !)</div>
+        <div>✨ <b>Étape 4 :</b> Passer la plus belle des soirées avec toi</div>
     </div>
 
-    <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Blouson prêt ? Casque prêt ?</p>
+    <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Prête pour notre voyage virtuel ?</p>
     <button onclick="lancerDepart()">Je suis prête ! 😍</button>
 </div>
 
@@ -134,7 +134,7 @@ function tictac() {
     const difference = heureRdv - maintenant;
 
     if (difference <= 0) {
-        document.getElementById("countdown").innerHTML = "C'est l'heure ! ✨ En route ❤️";
+        document.getElementById("countdown").innerHTML = "C'est l'heure ! ✨ En ligne ❤️";
         clearInterval(chronoInterval);
         return;
     }
@@ -153,7 +153,7 @@ function tictac() {
 const chronoInterval = setInterval(tictac, 1000);
 tictac();
 
-// Douce pluie de cœurs de tailles différentes
+// Douce pluie de cœurs
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -168,12 +168,12 @@ setInterval(() => {
 
 function lancerDepart() {
     document.getElementById("content").innerHTML = `
-        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">Message bien reçu... 🥰</h1>
-        <h2>Parfait, j'arrive !</h2>
+        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">Appel en cours... 📞❤️</h1>
+        <h2>Connexion établie !</h2>
         <br>
-        <p style="font-size: 1.15rem;">Fais attention à toi en descendant. La moto est chaude, et moi j'ai vraiment hâte de voir ton sourire. À tout de suite khonocha. ❤️</p>
+        <p style="font-size: 1.15rem;">Peu importe les kilomètres entre le Maroc et l'Italie, ce soir il n'y a que toi et moi qui comptons. Prépare ta webcam et ton plus beau sourire khonocha, j'ai vraiment trop hâte. À tout de suite ! 🥰</p>
         <br>
-        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">🏍️✨❤️</span>
+        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">🇲🇦✈️🇮🇹</span>
     `;
 }
 </script>
