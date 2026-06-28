@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Invitation secrète</title>
+<title>C'est le grand jour ! 🏍️</title>
 
 <style>
 body {
@@ -20,46 +20,55 @@ body {
     min-height: 100vh;
     box-sizing: border-box;
 }
-h1 { color: #ff3366; text-shadow: 0 0 10px #ff3366; }
+h1 { color: #ff3366; text-shadow: 0 0 15px #ff3366; font-size: 2.3rem; }
 h2 { color: #00ff88; }
 .container {
     max-width: 600px;
     width: 100%;
+    background: #161b22;
+    padding: 30px;
+    border-radius: 15px;
+    border: 1px solid #30363d;
+    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+}
+#countdown {
+    font-size: 2.5rem;
+    font-weight: bold;
+    color: #00ff88;
+    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
+    background: #0d1117;
+    padding: 15px;
+    border-radius: 8px;
+    display: inline-block;
+    margin: 20px 0;
+    font-variant-numeric: tabular-nums;
+}
+.programme {
+    text-align: left;
+    margin: 25px auto;
+    max-width: 350px;
+    font-size: 1.1rem;
+    line-height: 2rem;
 }
 button {
     padding: 15px 30px;
-    margin: 15px;
     font-size: 18px;
     font-family: monospace;
     font-weight: bold;
+    background: #ff3366;
+    color: white;
     border: none;
     border-radius: 5px;
     cursor: pointer;
-    transition: transform 0.2s;
+    box-shadow: 0 0 10px rgba(217, 45, 93, 0.5);
+    transition: all 0.3s ease;
 }
-button:hover { transform: scale(1.05); }
-#oui, #boutonDate, #boutonMoto {
+button:hover { 
+    transform: scale(1.05);
     background: #00ff88;
     color: #0d1117;
+    box-shadow: 0 0 15px #00ff88;
 }
-#non {
-    background: #ff3366;
-    color: white;
-    position: absolute;
-    z-index: 1000;
-}
-input[type="date"] {
-    padding: 12px;
-    font-size: 18px;
-    font-family: monospace;
-    background: #161b22;
-    color: #00ff88;
-    border: 2px solid #00ff88;
-    border-radius: 5px;
-    margin: 20px 0;
-    outline: none;
-}
-/* Style pour les petits cœurs qui tombent */
 .heart {
     position: fixed;
     color: #ff3366;
@@ -76,83 +85,82 @@ input[type="date"] {
 <body>
 
 <div id="content" class="container">
-    <h2>Initialisation...</h2>
-    <p>Recherche de la plus belle fille de la Terre...</p>
-    <h1>❤️ khonocha ❤️</h1>
-    <p>Accepterais-tu un rendez-vous avec moi ?</p>
+    <h2>[ PROTOCOLE : DIMANCHE ACTIF ]</h2>
+    <h1>C'est AUJOURD'HUI khonocha ! 🏁</h1>
+    <p>Le compte à rebours avant le départ est lancé :</p>
     
-    <button id="oui" onclick="etapeCalendrier()">OUI ❤️</button>
-    <button id="non">NON ❌</button>
+    <!-- Zone du compte à rebours -->
+    <div id="countdown">00h 00m 00s</div>
+    
+    <hr style="border: 0; border-top: 1px solid #30363d; margin: 20px 0;">
+    
+    <h3>📋 Ta feuille de route pour 18h :</h3>
+    <div class="programme">
+        🏍️ <b>Étape 1 :</b> Sortir le casque<br>
+        💨 <b>Étape 2 :</b> Balade sur la moto<br>
+        🌅 <b>Étape 3 :</b> Coucher de soleil<br>
+        🍦 <b>Étape 4 :</b> Glace en bonne compagnie
+    </div>
+
+    <p>Prête à valider les objectifs ?</p>
+    <button onclick="lancerDepart()">Je suis prête ! 🏍️💨</button>
 </div>
 
 <script>
-// Gestion du bouton NON qui s'enfuit
-const non = document.getElementById("non");
-non.addEventListener("mouseover", () => {
-    const x = Math.random() * (window.innerWidth - non.offsetWidth);
-    const y = Math.random() * (window.innerHeight - non.offsetHeight);
-    non.style.left = x + "px";
-    non.style.top = y + "px";
-});
+// Configuration de l'heure du RDV (Aujourd'hui à 18h00)
+const heureRdv = new Date();
+heureRdv.setHours(18, 0, 0, 0);
 
-// Étape 2 : Le choix de la date
-function etapeCalendrier() {
-    startHearts(); // Lance la pluie de cœurs
-    document.getElementById("content").innerHTML = `
-        <h1>Accès autorisé ❤️</h1>
-        <h2>Parfait ! Choisis la date de notre rendez-vous :</h2>
-        <input type="date" id="dateRdv" min="${new Date().toISOString().split('T')[0]}"><br>
-        <button id="boutonDate" onclick="etapeMoto()">Valider la date 🗓️</button>
-    `;
-}
+function tictac() {
+    const maintenant = new Date();
+    const difference = heureRdv - maintenant;
 
-// Étape 3 : La surprise en moto
-function etapeMoto() {
-    const dateChoisie = document.getElementById("dateRdv").value;
-    if(!dateChoisie) {
-        alert("Choisis une date d'abord ! 😉");
+    if (difference <= 0) {
+        document.getElementById("countdown").innerHTML = "C'EST L'HEURE ! ⏱️🔥";
+        clearInterval(chronoInterval);
         return;
     }
-    
-    // Formater la date un peu plus joliment
-    const options = { weekday: 'long', year: 'numeric', month: 'long', day: 'numeric' };
-    const dateFormatee = new Date(dateChoisie).toLocaleDateString('fr-FR', options);
 
-    document.getElementById("content").innerHTML = `
-        <h1>Date réservée ! 🔥</h1>
-        <h3>Le ${dateFormatee}</h3>
-        <br>
-        <h2>Question bonus très importante...</h2>
-        <p>Ça te dit qu'on se fasse un tour en moto 🏍️ suivi d'une bonne glace sous le coucher de soleil 🌅🍦 ?</p>
-        <button id="boutonMoto" onclick="etapeFin()">Carrément ! 😍</button>
-    `;
+    const heures = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
+    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
+    const secondes = Math.floor((difference % (1000 * 60)) / 1000);
+
+    // Formatage avec un zéro devant si < 10
+    const hAffichage = heures < 10 ? "0" + heures : heures;
+    const mAffichage = minutes < 10 ? "0" + minutes : minutes;
+    const sAffichage = secondes < 10 ? "0" + secondes : secondes;
+
+    document.getElementById("countdown").innerHTML = `${hAffichage}h ${mAffichage}m ${sAffichage}s`;
 }
 
-// Étape finale : Message de confirmation
-function etapeFin() {
-    document.getElementById("content").innerHTML = `
-        <h1>Programme verrouillé ! 🔐🏍️</h1>
-        <h2>C'est officiel khonocha, le rendez-vous est pris.</h2>
-        <p>Prépare-toi pour la moto, le coucher de soleil et la glace ! 🌅🍦</p>
-        <br>
-        <h3 style="color: #ff3366;">J'ai hâte. ❤️</h3>
-    `;
-}
+// Lancement du chrono toutes les secondes
+const chronoInterval = setInterval(tictac, 1000);
+tictac(); // Appel immédiat pour éviter le flash à 00:00:00
 
-// Petit bonus : Pluie de cœurs en arrière-plan
-function startHearts() {
-    setInterval(() => {
-        const heart = document.createElement("div");
-        heart.classList.add("heart");
-        heart.innerHTML = "❤️";
-        heart.style.left = Math.random() * 100 + "vw";
-        heart.style.top = "-5vh";
-        heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
-        document.body.appendChild(heart);
-        setTimeout(() => heart.remove(), 5000);
-    }, 300);
+// Pluie de cœurs automatique en tâche de fond
+setInterval(() => {
+    const heart = document.createElement("div");
+    heart.classList.add("heart");
+    heart.innerHTML = "❤️";
+    heart.style.left = Math.random() * 100 + "vw";
+    heart.style.top = "-5vh";
+    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    document.body.appendChild(heart);
+    setTimeout(() => heart.remove(), 5000);
+}, 250);
+
+function lancerDepart() {
+    document.getElementById("content").innerHTML = `
+        <h1 style="color: #00ff88; text-shadow: 0 0 15px #00ff88;">Signal reçu ! 🛰️</h1>
+        <h2>Pilote en route... Enfile ton blouson !</h2>
+        <br>
+        <p style="font-size: 1.2rem;">La moto chauffe. Je passe te chercher pour notre virée, le coucher de soleil et la glace. ❤️</p>
+        <br>
+        <span style="font-size: 3rem;">🏍️💨💨</span>
+    `;
 }
 </script>
 
 </body>
+</html>
 </html>
