@@ -3,13 +3,14 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>C'est le grand jour ! 🏍️</title>
+<title>Pour khonocha... ❤️</title>
 
 <style>
 body {
-    background: #0d1117;
-    color: #00ff88;
-    font-family: monospace;
+    background: #0f0c20;
+    background: linear-gradient(135deg, #1f1a3a 0%, #0f0c20 100%);
+    color: #ffffff;
+    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     text-align: center;
     margin: 0;
     padding: 20px;
@@ -19,65 +20,85 @@ body {
     justify-content: center;
     min-height: 100vh;
     box-sizing: border-box;
+    overflow-x: hidden;
 }
-h1 { color: #ff3366; text-shadow: 0 0 15px #ff3366; font-size: 2.3rem; }
-h2 { color: #00ff88; }
+h1 { 
+    color: #ff4a75; 
+    text-shadow: 0 0 20px rgba(255, 74, 117, 0.6); 
+    font-size: 2.5rem;
+    margin-bottom: 10px;
+}
+h2 { 
+    color: #ff9ebb; 
+    font-weight: 400;
+    font-size: 1.4rem;
+}
+p {
+    color: #e0e0fc;
+    font-size: 1.1rem;
+    max-width: 450px;
+    line-height: 1.6rem;
+}
 .container {
-    max-width: 600px;
+    max-width: 500px;
     width: 100%;
-    background: #161b22;
-    padding: 30px;
-    border-radius: 15px;
-    border: 1px solid #30363d;
-    box-shadow: 0 10px 30px rgba(0,0,0,0.5);
+    background: rgba(255, 255, 255, 0.05);
+    backdrop-filter: blur(10px);
+    padding: 40px 20px;
+    border-radius: 24px;
+    border: 1px solid rgba(255, 255, 255, 0.1);
+    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 #countdown {
-    font-size: 2.5rem;
-    font-weight: bold;
-    color: #00ff88;
-    text-shadow: 0 0 10px rgba(0, 255, 136, 0.5);
-    background: #0d1117;
-    padding: 15px;
-    border-radius: 8px;
+    font-size: 2.8rem;
+    font-weight: 700;
+    color: #ff4a75;
+    text-shadow: 0 0 15px rgba(255, 74, 117, 0.4);
+    background: rgba(0, 0, 0, 0.2);
+    padding: 10px 20px;
+    border-radius: 15px;
     display: inline-block;
-    margin: 20px 0;
-    font-variant-numeric: tabular-nums;
+    margin: 25px 0;
+    letter-spacing: 1px;
 }
-.programme {
+.programme-mignon {
     text-align: left;
-    margin: 25px auto;
-    max-width: 350px;
+    margin: 30px auto;
+    max-width: 320px;
     font-size: 1.1rem;
-    line-height: 2rem;
+    background: rgba(255, 74, 117, 0.1);
+    padding: 20px;
+    border-radius: 15px;
+    border-left: 4px solid #ff4a75;
+}
+.programme-mignon div {
+    margin-bottom: 12px;
 }
 button {
-    padding: 15px 30px;
+    padding: 16px 35px;
     font-size: 18px;
-    font-family: monospace;
     font-weight: bold;
-    background: #ff3366;
+    background: linear-gradient(45deg, #ff4a75, #ff758c);
     color: white;
     border: none;
-    border-radius: 5px;
+    border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 0 10px rgba(217, 45, 93, 0.5);
+    box-shadow: 0 5px 20px rgba(255, 74, 117, 0.4);
     transition: all 0.3s ease;
 }
 button:hover { 
-    transform: scale(1.05);
-    background: #00ff88;
-    color: #0d1117;
-    box-shadow: 0 0 15px #00ff88;
+    transform: translateY(-3px);
+    box-shadow: 0 8px 25px rgba(255, 74, 117, 0.6);
 }
 .heart {
     position: fixed;
-    color: #ff3366;
-    font-size: 20px;
+    color: #ff4a75;
     animation: fall linear forwards;
     z-index: -1;
+    opacity: 0.8;
 }
 @keyframes fall {
-    to { transform: translateY(105vh); }
+    to { transform: translateY(105vh) rotate(360deg); }
 }
 </style>
 </head>
@@ -85,29 +106,26 @@ button:hover {
 <body>
 
 <div id="content" class="container">
-    <h2>[ PROTOCOLE : DIMANCHE ACTIF ]</h2>
-    <h1>C'est AUJOURD'HUI khonocha ! 🏁</h1>
-    <p>Le compte à rebours avant le départ est lancé :</p>
+    <h2>Aujourd'hui, c'est notre dimanche... ✨</h2>
+    <h1>Coucou khonocha ❤️</h1>
+    <p>Je comptais les jours, et on y est enfin. J'ai déjà hâte d'y être. Regarde le temps qu'il te reste pour te préparer :</p>
     
     <!-- Zone du compte à rebours -->
     <div id="countdown">00h 00m 00s</div>
     
-    <hr style="border: 0; border-top: 1px solid #30363d; margin: 20px 0;">
-    
-    <h3>📋 Ta feuille de route pour 18h :</h3>
-    <div class="programme">
-        🏍️ <b>Étape 1 :</b> Sortir le casque<br>
-        💨 <b>Étape 2 :</b> Balade sur la moto<br>
-        🌅 <b>Étape 3 :</b> Coucher de soleil<br>
-        🍦 <b>Étape 4 :</b> Glace en bonne compagnie
+    <div class="programme-mignon">
+        <div>🏍️ <b>Étape 1 :</b> Grimper sur la moto (et te tenir fort à moi)</div>
+        <div>🌅 <b>Étape 2 :</b> Attraper le plus beau coucher de soleil</div>
+        <div>🍦 <b>Étape 3 :</b> Manger une glace</div>
+        <div>✨ <b>Étape 4 :</b> Passer le meilleur des moments avec toi</div>
     </div>
 
-    <p>Prête à valider les objectifs ?</p>
-    <button onclick="lancerDepart()">Je suis prête ! 🏍️💨</button>
+    <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Blouson prêt ? Casque prêt ?</p>
+    <button onclick="lancerDepart()">Je suis prête ! 😍</button>
 </div>
 
 <script>
-// Configuration de l'heure du RDV (Aujourd'hui à 18h00)
+// Configuration du RDV à 18h00 aujourd'hui
 const heureRdv = new Date();
 heureRdv.setHours(18, 0, 0, 0);
 
@@ -116,7 +134,7 @@ function tictac() {
     const difference = heureRdv - maintenant;
 
     if (difference <= 0) {
-        document.getElementById("countdown").innerHTML = "C'EST L'HEURE ! ⏱️🔥";
+        document.getElementById("countdown").innerHTML = "C'est l'heure ! ✨ En route ❤️";
         clearInterval(chronoInterval);
         return;
     }
@@ -125,7 +143,6 @@ function tictac() {
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const secondes = Math.floor((difference % (1000 * 60)) / 1000);
 
-    // Formatage avec un zéro devant si < 10
     const hAffichage = heures < 10 ? "0" + heures : heures;
     const mAffichage = minutes < 10 ? "0" + minutes : minutes;
     const sAffichage = secondes < 10 ? "0" + secondes : secondes;
@@ -133,34 +150,33 @@ function tictac() {
     document.getElementById("countdown").innerHTML = `${hAffichage}h ${mAffichage}m ${sAffichage}s`;
 }
 
-// Lancement du chrono toutes les secondes
 const chronoInterval = setInterval(tictac, 1000);
-tictac(); // Appel immédiat pour éviter le flash à 00:00:00
+tictac();
 
-// Pluie de cœurs automatique en tâche de fond
+// Douce pluie de cœurs de tailles différentes
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    heart.innerHTML = "❤️";
+    heart.innerHTML = Math.random() > 0.5 ? "❤️" : "💖";
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.top = "-5vh";
-    heart.style.animationDuration = (Math.random() * 3 + 2) + "s";
+    heart.style.fontSize = (Math.random() * 15 + 15) + "px";
+    heart.style.animationDuration = (Math.random() * 3 + 3) + "s";
     document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5000);
-}, 250);
+    setTimeout(() => heart.remove(), 6000);
+}, 300);
 
 function lancerDepart() {
     document.getElementById("content").innerHTML = `
-        <h1 style="color: #00ff88; text-shadow: 0 0 15px #00ff88;">Signal reçu ! 🛰️</h1>
-        <h2>Pilote en route... Enfile ton blouson !</h2>
+        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">Message bien reçu... 🥰</h1>
+        <h2>Parfait, j'arrive !</h2>
         <br>
-        <p style="font-size: 1.2rem;">La moto chauffe. Je passe te chercher pour notre virée, le coucher de soleil et la glace. ❤️</p>
+        <p style="font-size: 1.15rem;">Fais attention à toi en descendant. La moto est chaude, et moi j'ai vraiment hâte de voir ton sourire. À tout de suite khonocha. ❤️</p>
         <br>
-        <span style="font-size: 3rem;">🏍️💨💨</span>
+        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">🏍️✨❤️</span>
     `;
 }
 </script>
 
 </body>
-</html>
 </html>
