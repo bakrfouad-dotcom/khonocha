@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour khonocha... ❤️</title>
+<title>Bientôt ensemble... ❤️</title>
 
 <style>
 body {
@@ -32,6 +32,7 @@ h2 {
     color: #ff9ebb; 
     font-weight: 400;
     font-size: 1.3rem;
+    margin-top: 5px;
 }
 p {
     color: #e0e0fc;
@@ -50,12 +51,12 @@ p {
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
 #countdown {
-    font-size: 2.6rem;
+    font-size: 2.2rem;
     font-weight: 700;
     color: #ff4a75;
     text-shadow: 0 0 15px rgba(255, 74, 117, 0.4);
     background: rgba(0, 0, 0, 0.2);
-    padding: 10px 20px;
+    padding: 12px 20px;
     border-radius: 15px;
     display: inline-block;
     margin: 20px 0;
@@ -106,54 +107,60 @@ button:hover {
 <body>
 
 <div id="content" class="container">
-    <h2>Casablanca ✈️ Italie... ❤️</h2>
-    <h1>Coucou ma belle khonocha 🥰</h1>
-    <p>Franchement la distance c'est lourd de fou, mais ce soir on s'en fiche, on l'oublie complètement. Regarde le petit chrono avant notre moment à nous :</p>
+    <h2>Fini les écrans... ❤️</h2>
+    <h1>On se voit ce dimanche ! 🥰</h1>
+    <p>Je tiens plus en place, je viens te voir pour de vrai. Plus de distance, plus de messages, juste toi et moi. Regarde combien de temps il reste avant qu'on se retrouve :</p>
     
     <!-- Zone du compte à rebours -->
-    <div id="countdown">00h 00m 00s</div>
+    <div id="countdown">00j 00h 00m 00s</div>
     
     <div class="programme-mignon">
-        <div>🚗 <b>Étape 1 :</b> De mon côté je prends la voiture à Casa, et toi tu démarres ta moto en Italie.</div>
-        <div>📱 <b>Étape 2 :</b> On se lance le gros appel vidéo.</div>
-        <div>🍦 <b>Étape 3 :</b> On va se chercher une bonne glace chacun de notre côté.</div>
-        <div>🌅 <b>Étape 4 :</b> On se pose ensemble devant le coucher de soleil pour parler de tout, de nous et de notre futur... ✨</div>
+        <div>✈️ <b>Étape 1 :</b> Je fais le voyage et j'arrive dimanche matin.</div>
+        <div>🔑 <b>Étape 2 :</b> Tu me rejoins le plus tôt possible là où j'ai pris ma chambre.</div>
+        <div>⏳ <b>Étape 3 :</b> Je t'attends avec une impatience de malade mental.</div>
+        <div>✨ <b>Étape 4 :</b> On se lâche plus de tout le séjour.</div>
     </div>
 
-    <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">T'es prête pour notre date ?</p>
-    <button onclick="lancerDepart()">Grave ! 😍</button>
+    <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Tu vas venir me voir dès le matin ? 🥺</p>
+    <button onclick="lancerDepart()">Oui, je cours ! 😍</button>
 </div>
 
 <script>
-// Configuration du RDV à 18h00 aujourd'hui
-const heureRdv = new Date();
-heureRdv.setHours(18, 0, 0, 0);
+// Configuration automatique du compte à rebours pour le dimanche matin à 09h00
+const maintenant = new Date();
+const dateRdv = new Date();
+const jourActuel = maintenant.getDay(); // 4 pour jeudi
+const joursRestants = (7 - jourActuel) % 7;
+dateRdv.setDate(maintenant.getDate() + (joursRestants === 0 ? 7 : joursRestants));
+dateRdv.setHours(9, 0, 0, 0); // Dimanche à 9h00 du matin
 
 function tictac() {
-    const maintenant = new Date();
-    const difference = heureRdv - maintenant;
+    const actuel = new Date();
+    const difference = dateRdv - actuel;
 
     if (difference <= 0) {
-        document.getElementById("countdown").innerHTML = "C'est l'heure ! Appelle-moi ❤️";
+        document.getElementById("countdown").innerHTML = "JE SUIS LÀ ! ❤️";
         clearInterval(chronoInterval);
         return;
     }
 
+    const jours = Math.floor(difference / (1000 * 60 * 60 * 24));
     const heures = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
     const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
     const secondes = Math.floor((difference % (1000 * 60)) / 1000);
 
+    const jAffichage = jours < 10 ? "0" + jours : jours;
     const hAffichage = heures < 10 ? "0" + heures : heures;
     const mAffichage = minutes < 10 ? "0" + minutes : minutes;
     const sAffichage = secondes < 10 ? "0" + secondes : secondes;
 
-    document.getElementById("countdown").innerHTML = `${hAffichage}h ${mAffichage}m ${sAffichage}s`;
+    document.getElementById("countdown").innerHTML = `${jAffichage}j ${hAffichage}h ${mAffichage}m ${sAffichage}s`;
 }
 
 const chronoInterval = setInterval(tictac, 1000);
 tictac();
 
-// Pluie de cœurs beaucoup plus dense (générée deux fois plus vite)
+// Pluie de cœurs
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -165,16 +172,16 @@ setInterval(() => {
     heart.style.animationDuration = (Math.random() * 3 + 2.5) + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 5500);
-}, 150); // Temps réduit pour avoir deux fois plus de cœurs sur l'écran
+}, 150);
 
 function lancerDepart() {
     document.getElementById("content").innerHTML = `
-        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">C'est validé... 🥰</h1>
-        <h2>Prépare ton plus beau sourire !</h2>
+        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">J'ai trop hâte... 🥰</h1>
+        <h2>Je compte les minutes.</h2>
         <br>
-        <p style="font-size: 1.15rem;">Peu importe les kilomètres entre le Maroc et l'Italie, ce soir il n'y a que toi et moi. J'ai vraiment trop hâte de te voir et qu'on passe ce moment ensemble. Mets ton casque, sois prudente sur ta moto, et à tout de suite khonocha. ❤️</p>
+        <p style="font-size: 1.15rem;">Sérieusement khonocha, viens le plus tôt possible dimanche matin. Je vais t'attendre sagement dans ma chambre avec une impatience de fou furieux. Fais super attention à toi sur la route, et prépare-toi à ce qu'on rattrape tout ce temps perdu. À dimanche, je t'aime. ❤️</p>
         <br>
-        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">🚗💨📱🏍️</span>
+        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🔑🏨❤️</span>
     `;
 }
 </script>
