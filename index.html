@@ -75,21 +75,38 @@ p {
 .programme-mignon div {
     margin-bottom: 12px;
 }
+.buttons-container {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    margin-top: 20px;
+}
 button {
     padding: 16px 35px;
     font-size: 18px;
     font-weight: bold;
-    background: linear-gradient(45deg, #ff4a75, #ff758c);
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
-    box-shadow: 0 5px 20px rgba(255, 74, 117, 0.4);
     transition: all 0.3s ease;
 }
-button:hover { 
+#btn-oui {
+    background: linear-gradient(45deg, #ff4a75, #ff758c);
+    box-shadow: 0 5px 20px rgba(255, 74, 117, 0.4);
+}
+#btn-oui:hover { 
     transform: translateY(-3px);
     box-shadow: 0 8px 25px rgba(255, 74, 117, 0.6);
+}
+#btn-non {
+    background: rgba(255, 255, 255, 0.1);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
+}
+#btn-non:hover {
+    background: rgba(255, 255, 255, 0.2);
+    transform: translateY(-3px);
 }
 .heart {
     position: fixed;
@@ -122,17 +139,20 @@ button:hover {
     </div>
 
     <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Tu vas venir me voir dès le matin ? 🥺</p>
-    <button onclick="lancerDepart()">Oui, je cours ! 😍</button>
+    <div class="buttons-container">
+        <button id="btn-oui" onclick="reponseOui()">Oui, je cours ! 😍</button>
+        <button id="btn-non" onclick="reponseNon()">Non... 😢</button>
+    </div>
 </div>
 
 <script>
 // Configuration automatique du compte à rebours pour ce dimanche à 09h00 du matin
 const maintenant = new Date();
 const dateRdv = new Date();
-const jourActuel = maintenant.getDay(); // Récupère le jour de la semaine
+const jourActuel = maintenant.getDay(); 
 const joursRestants = (7 - jourActuel) % 7;
 dateRdv.setDate(maintenant.getDate() + (joursRestants === 0 ? 7 : joursRestants));
-dateRdv.setHours(9, 0, 0, 0); // Cible : Dimanche 9h00
+dateRdv.setHours(9, 0, 0, 0); 
 
 function tictac() {
     const actuel = new Date();
@@ -174,12 +194,25 @@ setInterval(() => {
     setTimeout(() => heart.remove(), 5500);
 }, 150);
 
-function lancerDepart() {
+// Si elle clique sur OUI
+function reponseOui() {
     document.getElementById("content").innerHTML = `
         <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">J'ai trop hâte... 🥰</h1>
-        <h2>Je compte les minutes.</h2>
+        <h2>T'avais intérêt de choisir oui ! 😉❤️</h2>
         <br>
         <p style="font-size: 1.15rem;">Sérieusement khonocha, viens le plus tôt possible dimanche matin. Je serai déjà dans ma chambre depuis samedi soir, à t'attendre avec une impatience de fou furieux. Sois prudente sur la route, et prépare-toi à ce qu'on rattrape tout ce temps perdu. À dimanche, je t'aime fort. ❤️</p>
+        <br>
+        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🏨🔑❤️</span>
+    `;
+}
+
+// Si elle clique sur NON
+function reponseNon() {
+    document.getElementById("content").innerHTML = `
+        <h1 style="color: #ff4a75; text-shadow: 0 0 15px rgba(255, 74, 117, 0.4);">Yak alhmara ! 😤😂</h1>
+        <h2>Tu pensais vraiment pouvoir dire non ?</h2>
+        <br>
+        <p style="font-size: 1.15rem;">Même si tu cliques sur non, bah en fait c'est oui ! Pas d'excuses, tu n'as pas le choix. Dimanche matin, je t'attends de pied ferme dans ma chambre et on va se voir pour de vrai ! Prépare-toi à ce qu'on rattrape tout ce temps perdu. Sois prudente sur la route, je t'aime fort. ❤️</p>
         <br>
         <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🏨🔑❤️</span>
     `;
