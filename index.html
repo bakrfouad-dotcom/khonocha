@@ -109,16 +109,16 @@ button:hover {
 <div id="content" class="container">
     <h2>Fini les écrans... ❤️</h2>
     <h1>On se voit ce dimanche ! 🥰</h1>
-    <p>Je tiens plus en place, je viens te voir pour de vrai. Plus de distance, plus de messages, juste toi et moi. Regarde combien de temps il reste avant qu'on se retrouve :</p>
+    <p>Je tiens plus en place. J'arrive déjà samedi soir dans ma chambre, et je vais passer la nuit à t'attendre en pensant à nous. Regarde combien de temps il reste avant notre dimanche matin :</p>
     
     <!-- Zone du compte à rebours -->
     <div id="countdown">00j 00h 00m 00s</div>
     
     <div class="programme-mignon">
-        <div>✈️ <b>Étape 1 :</b> Je fais le voyage et j'arrive dimanche matin.</div>
-        <div>🔑 <b>Étape 2 :</b> Tu me rejoins le plus tôt possible là où j'ai pris ma chambre.</div>
-        <div>⏳ <b>Étape 3 :</b> Je t'attends avec une impatience de malade mental.</div>
-        <div>✨ <b>Étape 4 :</b> On se lâche plus de tout le séjour.</div>
+        <div>✈️ <b>Étape 1 :</b> Je fais le voyage et je m'installe samedi soir.</div>
+        <div>🏨 <b>Étape 2 :</b> Je passe la nuit dans ma chambre à t'attendre sagement.</div>
+        <div>🔑 <b>Étape 3 :</b> Dimanche matin, tu me rejoins là-bas le plus tôt possible.</div>
+        <div>✨ <b>Étape 4 :</b> On oublie enfin la distance pour de vrai.</div>
     </div>
 
     <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Tu vas venir me voir dès le matin ? 🥺</p>
@@ -126,20 +126,20 @@ button:hover {
 </div>
 
 <script>
-// Configuration automatique du compte à rebours pour le dimanche matin à 09h00
+// Configuration automatique du compte à rebours pour ce dimanche à 09h00 du matin
 const maintenant = new Date();
 const dateRdv = new Date();
-const jourActuel = maintenant.getDay(); // 4 pour jeudi
+const jourActuel = maintenant.getDay(); // Récupère le jour de la semaine
 const joursRestants = (7 - jourActuel) % 7;
 dateRdv.setDate(maintenant.getDate() + (joursRestants === 0 ? 7 : joursRestants));
-dateRdv.setHours(9, 0, 0, 0); // Dimanche à 9h00 du matin
+dateRdv.setHours(9, 0, 0, 0); // Cible : Dimanche 9h00
 
 function tictac() {
     const actuel = new Date();
     const difference = dateRdv - actuel;
 
     if (difference <= 0) {
-        document.getElementById("countdown").innerHTML = "JE SUIS LÀ ! ❤️";
+        document.getElementById("countdown").innerHTML = "JE T'ATTENDS ! ❤️";
         clearInterval(chronoInterval);
         return;
     }
@@ -160,7 +160,7 @@ function tictac() {
 const chronoInterval = setInterval(tictac, 1000);
 tictac();
 
-// Pluie de cœurs
+// Pluie de cœurs bien dense
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
@@ -179,9 +179,9 @@ function lancerDepart() {
         <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">J'ai trop hâte... 🥰</h1>
         <h2>Je compte les minutes.</h2>
         <br>
-        <p style="font-size: 1.15rem;">Sérieusement khonocha, viens le plus tôt possible dimanche matin. Je vais t'attendre sagement dans ma chambre avec une impatience de fou furieux. Fais super attention à toi sur la route, et prépare-toi à ce qu'on rattrape tout ce temps perdu. À dimanche, je t'aime. ❤️</p>
+        <p style="font-size: 1.15rem;">Sérieusement khonocha, viens le plus tôt possible dimanche matin. Je serai déjà dans ma chambre depuis samedi soir, à t'attendre avec une impatience de fou furieux. Sois prudente sur la route, et prépare-toi à ce qu'on rattrape tout ce temps perdu. À dimanche, je t'aime fort. ❤️</p>
         <br>
-        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🔑🏨❤️</span>
+        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🏨🔑❤️</span>
     `;
 }
 </script>
