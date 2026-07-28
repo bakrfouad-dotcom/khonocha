@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Bientôt ensemble... ❤️</title>
+<title>Pour ma fiancée... 💍❤️</title>
 
 <style>
 body {
@@ -25,7 +25,7 @@ body {
 h1 { 
     color: #ff4a75; 
     text-shadow: 0 0 20px rgba(255, 74, 117, 0.6); 
-    font-size: 2.3rem;
+    font-size: 2.2rem;
     margin-bottom: 10px;
 }
 h2 { 
@@ -50,63 +50,40 @@ p {
     border: 1px solid rgba(255, 255, 255, 0.1);
     box-shadow: 0 20px 40px rgba(0,0,0,0.4);
 }
-#countdown {
-    font-size: 2.2rem;
-    font-weight: 700;
-    color: #ff4a75;
-    text-shadow: 0 0 15px rgba(255, 74, 117, 0.4);
-    background: rgba(0, 0, 0, 0.2);
-    padding: 12px 20px;
-    border-radius: 15px;
-    display: inline-block;
-    margin: 20px 0;
-    letter-spacing: 1px;
-}
-.programme-mignon {
+.bilan-box {
     text-align: left;
-    margin: 25px auto;
-    max-width: 340px;
+    margin: 20px auto;
+    max-width: 360px;
     font-size: 1.05rem;
     background: rgba(255, 74, 117, 0.15);
     padding: 20px;
     border-radius: 15px;
     border-left: 4px solid #ff4a75;
 }
-.programme-mignon div {
+.bilan-box div {
     margin-bottom: 12px;
 }
 .buttons-container {
     display: flex;
-    justify-content: center;
-    gap: 15px;
+    flex-direction: column;
+    gap: 12px;
     margin-top: 20px;
 }
 button {
-    padding: 16px 35px;
-    font-size: 18px;
+    padding: 15px 25px;
+    font-size: 16px;
     font-weight: bold;
     color: white;
     border: none;
     border-radius: 50px;
     cursor: pointer;
     transition: all 0.3s ease;
-}
-#btn-oui {
     background: linear-gradient(45deg, #ff4a75, #ff758c);
-    box-shadow: 0 5px 20px rgba(255, 74, 117, 0.4);
+    box-shadow: 0 5px 15px rgba(255, 74, 117, 0.3);
 }
-#btn-oui:hover { 
-    transform: translateY(-3px);
-    box-shadow: 0 8px 25px rgba(255, 74, 117, 0.6);
-}
-#btn-non {
-    background: rgba(255, 255, 255, 0.1);
-    border: 1px solid rgba(255, 255, 255, 0.2);
-    box-shadow: 0 5px 15px rgba(0, 0, 0, 0.2);
-}
-#btn-non:hover {
-    background: rgba(255, 255, 255, 0.2);
-    transform: translateY(-3px);
+button:hover { 
+    transform: translateY(-2px);
+    box-shadow: 0 8px 20px rgba(255, 74, 117, 0.5);
 }
 .heart {
     position: fixed;
@@ -124,67 +101,31 @@ button {
 <body>
 
 <div id="content" class="container">
-    <h2>Fini les écrans... ❤️</h2>
-    <h1>On se voit ce dimanche ! 🥰</h1>
-    <p>Je tiens plus en place. J'arrive déjà samedi soir dans ma chambre, et je vais passer la nuit à t'attendre en pensant à nous. Regarde combien de temps il reste avant notre dimanche matin :</p>
+    <h2>DÉBRIEF OFFICIEL 💍</h2>
+    <h1>Bon khonocha... On en parle ? 🥰</h1>
+    <p>Les 10 jours sont passés à une vitesse folle. Et en plus... tu as accepté de devenir ma fiancée ! 💍✨</p>
     
-    <!-- Zone du compte à rebours -->
-    <div id="countdown">00j 00h 00m 00s</div>
-    
-    <div class="programme-mignon">
-        <div>✈️ <b>Étape 1 :</b> Je fais le voyage et je m'installe samedi soir.</div>
-        <div>🏨 <b>Étape 2 :</b> Je passe la nuit dans ma chambre à t'attendre sagement.</div>
-        <div>🔑 <b>Étape 3 :</b> Dimanche matin, tu me rejoins là-bas le plus tôt possible.</div>
-        <div>✨ <b>Étape 4 :</b> On oublie enfin la distance pour de vrai.</div>
+    <div class="bilan-box">
+        <div>📊 <b>Statut actuel :</b> Fiancés (pas de retour en arrière possible 😉)</div>
+        <div>⏳ <b>Temps passé :</b> 10 jours incroyables</div>
+        <div>⚠️ <b>Problème :</b> La distance revient, mais le contrat est signé !</div>
     </div>
 
-    <p style="font-size: 0.95rem; font-style: italic; color: #ff9ebb;">Tu vas venir me voir dès le matin ? 🥺</p>
+    <p style="font-weight: bold; color: #ff9ebb;">Soyons honnêtes, c'était comment ces 10 jours avec moi ? 👇</p>
+    
     <div class="buttons-container">
-        <button id="btn-oui" onclick="reponseOui()">Oui, je cours ! 😍</button>
-        <button id="btn-non" onclick="reponseNon()">Non... 😢</button>
+        <button onclick="repondre('incroyable')">10/10 ! Le meilleur fiancé du monde 😍</button>
+        <button onclick="repondre('supportable')">Supportable, mais tu m'as trop saoulée 😂</button>
+        <button onclick="repondre('trop_court')">Beaucoup trop court, remets-moi 10 jours 🥺</button>
     </div>
 </div>
 
 <script>
-// Configuration automatique du compte à rebours pour ce dimanche à 09h00 du matin
-const maintenant = new Date();
-const dateRdv = new Date();
-const jourActuel = maintenant.getDay(); 
-const joursRestants = (7 - jourActuel) % 7;
-dateRdv.setDate(maintenant.getDate() + (joursRestants === 0 ? 7 : joursRestants));
-dateRdv.setHours(9, 0, 0, 0); 
-
-function tictac() {
-    const actuel = new Date();
-    const difference = dateRdv - actuel;
-
-    if (difference <= 0) {
-        document.getElementById("countdown").innerHTML = "JE T'ATTENDS ! ❤️";
-        clearInterval(chronoInterval);
-        return;
-    }
-
-    const jours = Math.floor(difference / (1000 * 60 * 60 * 24));
-    const heures = Math.floor((difference % (1000 * 60 * 60 * 24)) / (1000 * 60 * 60));
-    const minutes = Math.floor((difference % (1000 * 60 * 60)) / (1000 * 60));
-    const secondes = Math.floor((difference % (1000 * 60)) / 1000);
-
-    const jAffichage = jours < 10 ? "0" + jours : jours;
-    const hAffichage = heures < 10 ? "0" + heures : heures;
-    const mAffichage = minutes < 10 ? "0" + minutes : minutes;
-    const sAffichage = secondes < 10 ? "0" + secondes : secondes;
-
-    document.getElementById("countdown").innerHTML = `${jAffichage}j ${hAffichage}h ${mAffichage}m ${sAffichage}s`;
-}
-
-const chronoInterval = setInterval(tictac, 1000);
-tictac();
-
-// Pluie de cœurs bien dense
+// Pluie de cœurs et bagues
 setInterval(() => {
     const heart = document.createElement("div");
     heart.classList.add("heart");
-    const types = ["❤️", "💖", "💕", "✨"];
+    const types = ["❤️", "💖", "💍", "✨"];
     heart.innerHTML = types[Math.floor(Math.random() * types.length)];
     heart.style.left = Math.random() * 100 + "vw";
     heart.style.top = "-5vh";
@@ -192,29 +133,33 @@ setInterval(() => {
     heart.style.animationDuration = (Math.random() * 3 + 2.5) + "s";
     document.body.appendChild(heart);
     setTimeout(() => heart.remove(), 5500);
-}, 150);
+}, 180);
 
-// Si elle clique sur OUI
-function reponseOui() {
-    document.getElementById("content").innerHTML = `
-        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">J'ai trop hâte... 🥰</h1>
-        <h2>T'avais intérêt de choisir oui ! 😉❤️</h2>
-        <br>
-        <p style="font-size: 1.15rem;">Sérieusement khonocha, viens le plus tôt possible dimanche matin. Je serai déjà dans ma chambre depuis samedi soir, à t'attendre avec une impatience de fou furieux. Sois prudente sur la route, et prépare-toi à ce qu'on rattrape tout ce temps perdu. À dimanche, je t'aime fort. ❤️</p>
-        <br>
-        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🏨🔑❤️</span>
-    `;
-}
+function repondre(choix) {
+    let titre = "";
+    let texte = "";
+    let emoji = "";
 
-// Si elle clique sur NON
-function reponseNon() {
+    if (choix === 'incroyable') {
+        titre = "Je le savais déjà ! 😎❤️";
+        texte = "C'est normal, avec un fiancé parfait comme moi ! Plus sérieusement, c'était 10 jours magiques avec toi khonocha. Je suis l'homme le plus chanceux. T'as intérêt de m'envoyer un vocal là maintenant pour me dire ce que t'as préféré pendant ce séjour ! 😘";
+        emoji = "💍✨👑❤️";
+    } else if (choix === 'supportable') {
+        titre = "Yak alhmara ! 😂😤";
+        texte = "Tu fais la dure mais je sais très bien que tu as kiffé chaque seconde ! Et de toute façon c'est trop tard, le contrat est signé, t'es ma fiancée maintenant ! 😜 Dis-moi quand même ton vrai ressenti en vocal, je t'attends ! ❤️";
+        emoji = "💍🥊🤪❤️";
+    } else if (choix === 'trop_court') {
+        titre = "Moi aussi wallah... 🥺❤️";
+        texte = "C'est passé beaucoup trop vite. Mais ce n'est que le début de notre vie ensemble ma fiancée ! La distance va repartir un peu mais on a gravé des souvenirs magnifiques pendant ces 10 jours. Envoie-moi un vocal pour me dire tout ce que t'as sur le cœur. ❤️";
+        emoji = "✈️💍💖✨";
+    }
+
     document.getElementById("content").innerHTML = `
-        <h1 style="color: #ff4a75; text-shadow: 0 0 15px rgba(255, 74, 117, 0.4);">Yak alhmara ! 😤😂</h1>
-        <h2>Tu pensais vraiment pouvoir dire non ?</h2>
+        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">${titre}</h1>
         <br>
-        <p style="font-size: 1.15rem;">Même si tu cliques sur non, bah en fait c'est oui ! Pas d'excuses, tu n'as pas le choix. Dimanche matin, je t'attends de pied ferme dans ma chambre et on va se voir pour de vrai ! Prépare-toi à ce qu'on rattrape tout ce temps perdu. Sois prudente sur la route, je t'aime fort. ❤️</p>
+        <p style="font-size: 1.15rem;">${texte}</p>
         <br>
-        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">✈️🏨🔑❤️</span>
+        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">${emoji}</span>
     `;
 }
 </script>
