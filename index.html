@@ -94,21 +94,13 @@
             100% { transform: scale(1); }
         }
 
-        /* Conteneur des révélations (La bague et la demande) */
-        .reveal-container {
+        /* Photo cachée (Uniquement la demande) */
+        #secret-img {
             display: none;
             width: 100%;
             height: 100%;
-            flex-direction: column;
-            gap: 10px;
-        }
-
-        .reveal-container img {
-            width: 100%;
-            height: 50%;
             object-fit: cover;
-            border-radius: 3px;
-            box-shadow: 0 4px 10px rgba(0,0,0,0.15);
+            border-radius: 2px;
         }
 
         /* Photos Polaroid autour (5 photos au total) */
@@ -127,7 +119,7 @@
             display: block;
         }
 
-        /* Dispositions équilibrées des 5 photos */
+        /* Dispositions des 5 photos */
         #p1 { top: 150px; left: 30px; width: 195px; height: 220px; transform: rotate(-6deg); z-index: 4; }
         #p2 { top: 150px; right: 30px; width: 195px; height: 220px; transform: rotate(5deg); z-index: 4; }
         #p3 { top: 430px; left: 20px; width: 190px; height: 210px; transform: rotate(4deg); z-index: 6; }
@@ -199,7 +191,7 @@
             <h1 class="title">10 Jours d'Aventure... Et Une Surprise ! ♥</h1>
         </div>
 
-        <!-- Cadre Central / TOP SECRET (Révèle Bague + Demande) -->
+        <!-- Cadre Central / TOP SECRET (Uniquement la photo demandee.png) -->
         <div class="central-frame" id="main-frame">
             <div class="suspense-box" id="suspense-text">
                 <p style="font-size: 1.8em;">🔒 Moment Top Secret</p>
@@ -207,11 +199,8 @@
                 <button class="suspense-btn" onclick="revealSecret()">RÉVÉLER LA SURPRISE ! 💍</button>
             </div>
 
-            <!-- Les deux photos cachées qui apparaissent ensemble -->
-            <div class="reveal-container" id="reveal-photos">
-                <img src="Bague.jpg" alt="La Bague">
-                <img src="demandee.png" alt="La Demande">
-            </div>
+            <!-- Seule la photo de la demande apparait en grand -->
+            <img src="demandee.png" id="secret-img" alt="La Demande">
         </div>
 
         <!-- Les 5 Photos Souvenirs Autour -->
@@ -241,7 +230,7 @@
         // Révélation au clic du bouton
         function revealSecret() {
             document.getElementById('suspense-text').style.display = 'none';
-            document.getElementById('reveal-photos').style.display = 'flex';
+            document.getElementById('secret-img').style.display = 'block';
             document.getElementById('main-frame').style.background = 'white';
         }
 
