@@ -1,168 +1,284 @@
 <!DOCTYPE html>
 <html lang="fr">
 <head>
-<meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<title>Pour ma fiancée... 💍❤️</title>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Souvenirs de nos 10 Jours d'Aventure</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Caveat:wght@600&family=Montserrat:wght@400;600&display=swap');
 
-<style>
-body {
-    background: #0f0c20;
-    background: linear-gradient(135deg, #1f1a3a 0%, #0f0c20 100%);
-    color: #ffffff;
-    font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
-    text-align: center;
-    margin: 0;
-    padding: 20px;
-    display: flex;
-    flex-direction: column;
-    align-items: center;
-    justify-content: center;
-    min-height: 100vh;
-    box-sizing: border-box;
-    overflow-x: hidden;
-}
-h1 { 
-    color: #ff4a75; 
-    text-shadow: 0 0 20px rgba(255, 74, 117, 0.6); 
-    font-size: 2.2rem;
-    margin-bottom: 10px;
-}
-h2 { 
-    color: #ff9ebb; 
-    font-weight: 400;
-    font-size: 1.3rem;
-    margin-top: 5px;
-}
-p {
-    color: #e0e0fc;
-    font-size: 1.1rem;
-    max-width: 450px;
-    line-height: 1.6rem;
-}
-.container {
-    max-width: 500px;
-    width: 100%;
-    background: rgba(255, 255, 255, 0.05);
-    backdrop-filter: blur(10px);
-    padding: 30px 20px;
-    border-radius: 24px;
-    border: 1px solid rgba(255, 255, 255, 0.1);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
-}
-.bilan-box {
-    text-align: left;
-    margin: 20px auto;
-    max-width: 360px;
-    font-size: 1.05rem;
-    background: rgba(255, 74, 117, 0.15);
-    padding: 20px;
-    border-radius: 15px;
-    border-left: 4px solid #ff4a75;
-}
-.bilan-box div {
-    margin-bottom: 12px;
-}
-.buttons-container {
-    display: flex;
-    flex-direction: column;
-    gap: 12px;
-    margin-top: 20px;
-}
-button {
-    padding: 15px 25px;
-    font-size: 16px;
-    font-weight: bold;
-    color: white;
-    border: none;
-    border-radius: 50px;
-    cursor: pointer;
-    transition: all 0.3s ease;
-    background: linear-gradient(45deg, #ff4a75, #ff758c);
-    box-shadow: 0 5px 15px rgba(255, 74, 117, 0.3);
-}
-button:hover { 
-    transform: translateY(-2px);
-    box-shadow: 0 8px 20px rgba(255, 74, 117, 0.5);
-}
-.heart {
-    position: fixed;
-    color: #ff4a75;
-    animation: fall linear forwards;
-    z-index: -1;
-    opacity: 0.85;
-}
-@keyframes fall {
-    to { transform: translateY(105vh) rotate(360deg); }
-}
-</style>
+        * {
+            box-sizing: border-box;
+            margin: 0;
+            padding: 0;
+        }
+
+        body {
+            background-color: #d1c7bd;
+            font-family: 'Caveat', cursive, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        .scrapbook-page {
+            background-color: #f7f3ed;
+            width: 850px;
+            height: 1100px;
+            padding: 30px;
+            box-shadow: 0 15px 35px rgba(0,0,0,0.25);
+            position: relative;
+            overflow: hidden;
+            border-radius: 4px;
+            background-image: radial-gradient(#e2dad0 1px, transparent 1px);
+            background-size: 20px 20px;
+        }
+
+        /* Titre principal */
+        .title-container {
+            text-align: center;
+            margin-top: 15px;
+            margin-bottom: 25px;
+        }
+
+        .title {
+            font-size: 3.2em;
+            color: #2c2c2c;
+            font-weight: 600;
+            letter-spacing: 1px;
+        }
+
+        .heart {
+            color: #2c2c2c;
+            font-size: 0.9em;
+        }
+
+        /* Cadre central */
+        .central-frame {
+            position: absolute;
+            top: 230px;
+            left: 50%;
+            transform: translateX(-50%);
+            width: 360px;
+            height: 480px;
+            background: #fff;
+            padding: 12px;
+            box-shadow: 0 10px 25px rgba(0,0,0,0.2);
+            z-index: 5;
+            border: 10px solid #c8a97e;
+            border-image: repeating-linear-gradient(45deg, #b89768, #b89768 15px, #d4b588 15px, #d4b588 30px) 10;
+        }
+
+        .central-frame img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+        }
+
+        /* Photos type Polaroid */
+        .photo-polaroid {
+            background-color: #ffffff;
+            padding: 10px 10px 35px 10px;
+            box-shadow: 0 6px 18px rgba(0,0,0,0.18);
+            position: absolute;
+            transition: transform 0.2s ease;
+            border-radius: 2px;
+        }
+
+        .photo-polaroid img {
+            width: 100%;
+            height: 100%;
+            object-fit: cover;
+            display: block;
+        }
+
+        /* Positions et rotations des photos */
+        #photo-ascenseur {
+            top: 170px;
+            left: 35px;
+            width: 200px;
+            height: 230px;
+            transform: rotate(-5deg);
+            z-index: 4;
+        }
+
+        #photo-scooter {
+            top: 180px;
+            right: 35px;
+            width: 200px;
+            height: 230px;
+            transform: rotate(6deg);
+            z-index: 4;
+        }
+
+        #photo-bisou {
+            top: 440px;
+            left: 25px;
+            width: 210px;
+            height: 230px;
+            transform: rotate(3deg);
+            z-index: 6;
+        }
+
+        #photo-doigt {
+            top: 440px;
+            right: 25px;
+            width: 190px;
+            height: 220px;
+            transform: rotate(-4deg);
+            z-index: 6;
+        }
+
+        #photo-bus {
+            bottom: 50px;
+            left: 35px;
+            width: 260px;
+            height: 250px;
+            transform: rotate(2deg);
+            z-index: 3;
+        }
+
+        #photo-carrelage {
+            bottom: 50px;
+            left: 320px;
+            width: 180px;
+            height: 220px;
+            transform: rotate(-5deg);
+            z-index: 2;
+        }
+
+        #photo-baskets {
+            bottom: 50px;
+            left: 510px;
+            width: 150px;
+            height: 210px;
+            transform: rotate(4deg);
+            z-index: 2;
+        }
+
+        #photo-repas {
+            bottom: 50px;
+            right: 25px;
+            width: 190px;
+            height: 220px;
+            transform: rotate(-2deg);
+            z-index: 3;
+        }
+
+        /* Tickets & Éléments décoratifs */
+        .ticket {
+            position: absolute;
+            font-family: 'Montserrat', sans-serif;
+            font-size: 0.7em;
+            font-weight: 600;
+            padding: 6px 12px;
+            border-radius: 3px;
+            box-shadow: 0 3px 8px rgba(0,0,0,0.15);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            z-index: 10;
+        }
+
+        #ticket-catania {
+            top: 85px;
+            left: 45px;
+            background: #e6c594;
+            color: #4a3820;
+            border: 1px dashed #aa8656;
+            transform: rotate(-12deg);
+        }
+
+        #ticket-date {
+            bottom: 300px;
+            left: 40px;
+            background: #d8c2aa;
+            color: #3d3023;
+            border: 1px solid #b39b82;
+            transform: rotate(-8deg);
+        }
+
+        #ticket-stub {
+            bottom: 280px;
+            right: 40px;
+            background: #e0bfa0;
+            color: #4a2e18;
+            border: 1px solid #a88363;
+            transform: rotate(10deg);
+        }
+
+        #ticket-stamp {
+            bottom: 40px;
+            left: 15px;
+            background: #f0e6d8;
+            color: #8b2626;
+            border: 2px solid #8b2626;
+            border-radius: 50%;
+            width: 65px;
+            height: 65px;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-align: center;
+            font-size: 0.55em;
+            transform: rotate(-20deg);
+        }
+    </style>
 </head>
-
 <body>
 
-<div id="content" class="container">
-    <h2>DÉBRIEF OFFICIEL 💍</h2>
-    <h1>Bon khonocha... On en parle ? 🥰</h1>
-    <p>Les 10 jours sont passés à une vitesse folle. Et en plus... tu as accepté de devenir ma fiancée ! 💍✨</p>
-    
-    <div class="bilan-box">
-        <div>📊 <b>Statut actuel :</b> Fiancés (pas de retour en arrière possible 😉)</div>
-        <div>⏳ <b>Temps passé :</b> 10 jours incroyables</div>
-        <div>⚠️ <b>Problème :</b> La distance revient, mais le contrat est signé !</div>
+    <div class="scrapbook-page">
+        <!-- Titre -->
+        <div class="title-container">
+            <h1 class="title">Souvenirs de nos 10 Jours d'Aventure <span class="heart">♥</span></h1>
+        </div>
+
+        <!-- Photo Centrale avec cadre -->
+        <div class="central-frame">
+            <img src="photo_centrale.png" alt="Photo centrale avec cadre en bois">
+        </div>
+
+        <!-- Photos Polaroid (fichiers .png) -->
+        <div class="photo-polaroid" id="photo-ascenseur">
+            <img src="photo_ascenseur.png" alt="Photo dans l'ascenseur">
+        </div>
+
+        <div class="photo-polaroid" id="photo-scooter">
+            <img src="photo_scooter.png" alt="Photo en scooter">
+        </div>
+
+        <div class="photo-polaroid" id="photo-bisou">
+            <img src="photo_bisou.png" alt="Photo bisou">
+        </div>
+
+        <div class="photo-polaroid" id="photo-doigt">
+            <img src="photo_doigt.png" alt="Photo clin d'oeil">
+        </div>
+
+        <div class="photo-polaroid" id="photo-bus">
+            <img src="photo_bus.png" alt="Photo devant le bus">
+        </div>
+
+        <div class="photo-polaroid" id="photo-carrelage">
+            <img src="photo_carrelage.png" alt="Photo motif carrelage">
+        </div>
+
+        <div class="photo-polaroid" id="photo-baskets">
+            <img src="photo_baskets.png" alt="Photo baskets">
+        </div>
+
+        <div class="photo-polaroid" id="photo-repas">
+            <img src="photo_repas.png" alt="Photo repas">
+        </div>
+
+        <!-- Tickets décoratifs -->
+        <div class="ticket" id="ticket-catania">Catania<br>Ticket</div>
+        <div class="ticket" id="ticket-date">Ticket<br>01-03/2023</div>
+        <div class="ticket" id="ticket-stub">Ticket Stub<br>BT 502214</div>
+        <div class="ticket" id="ticket-stamp">Cole to Ket<br>Approved</div>
+
     </div>
-
-    <p style="font-weight: bold; color: #ff9ebb;">Soyons honnêtes, c'était comment ces 10 jours avec moi ? 👇</p>
-    
-    <div class="buttons-container">
-        <button onclick="repondre('incroyable')">10/10 ! Le meilleur fiancé du monde 😍</button>
-        <button onclick="repondre('supportable')">Supportable, mais tu m'as trop saoulée 😂</button>
-        <button onclick="repondre('trop_court')">Beaucoup trop court, remets-moi 10 jours 🥺</button>
-    </div>
-</div>
-
-<script>
-// Pluie de cœurs et bagues
-setInterval(() => {
-    const heart = document.createElement("div");
-    heart.classList.add("heart");
-    const types = ["❤️", "💖", "💍", "✨"];
-    heart.innerHTML = types[Math.floor(Math.random() * types.length)];
-    heart.style.left = Math.random() * 100 + "vw";
-    heart.style.top = "-5vh";
-    heart.style.fontSize = (Math.random() * 18 + 15) + "px";
-    heart.style.animationDuration = (Math.random() * 3 + 2.5) + "s";
-    document.body.appendChild(heart);
-    setTimeout(() => heart.remove(), 5500);
-}, 180);
-
-function repondre(choix) {
-    let titre = "";
-    let texte = "";
-    let emoji = "";
-
-    if (choix === 'incroyable') {
-        titre = "Je le savais déjà ! 😎❤️";
-        texte = "C'est normal, avec un fiancé parfait comme moi ! Plus sérieusement, c'était 10 jours magiques avec toi khonocha. Je suis l'homme le plus chanceux. Regarde-moi dans les yeux là tout de suite en cam et dis-moi ce que t'as préféré pendant ce séjour ! 😘";
-        emoji = "💍✨👑❤️";
-    } else if (choix === 'supportable') {
-        titre = "Yak alhmara ! 😂😤";
-        texte = "Tu fais la dure mais je sais très bien que tu as kiffé chaque seconde ! Et de toute façon c'est trop tard, le contrat est signé, t'es ma fiancée maintenant ! 😜 Avoue-moi ton vrai ressenti en direct, je te regarde ! ❤️";
-        emoji = "💍🥊🤪❤️";
-    } else if (choix === 'trop_court') {
-        titre = "Moi aussi wallah... 🥺❤️";
-        texte = "C'est passé beaucoup trop vite. Mais ce n'est que le début de notre vie ensemble ma fiancée ! La distance va repartir un peu mais on a gravé des souvenirs magnifiques pendant ces 10 jours. Raconte-moi tout ce que t'as sur le cœur là maintenant en appel. ❤️";
-        emoji = "✈️💍💖✨";
-    }
-
-    document.getElementById("content").innerHTML = `
-        <h1 style="color: #ff9ebb; text-shadow: 0 0 15px rgba(255,158,187,0.4);">${titre}</h1>
-        <br>
-        <p style="font-size: 1.15rem;">${texte}</p>
-        <br>
-        <span style="font-size: 3.5rem; display: inline-block; animation: pulse 1.5s infinite;">${emoji}</span>
-    `;
-}
-</script>
 
 </body>
 </html>
